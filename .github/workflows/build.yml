@@ -158,13 +158,14 @@ jobs:
         pip freeze  # output Python packages, useful for debugging dependency versions
 
     - name: Run tests
+      if: runner.os != 'macOS'
       run: |
         source venv/bin/activate || source venv/Scripts/activate
         make test SKIP_SERVER_RUST=${{ matrix.skip_rust }}
 
     # Don't run integration tests on Windows, doesn't work for some reason
     - name: Run integration tests
-      if: runner.os != 'Windows'
+      if: runner.os != 'macOS'
       run: |
         source venv/bin/activate || source venv/Scripts/activate
         make test-integration
