@@ -162,7 +162,7 @@ package:
 	mkdir -p dist/activitywatch
 	for dir in $(PACKAGEABLES); do \
 		make --directory=$$dir package; \
-		cp -r $$dir/dist/$$dir dist/activitywatch; \
+		cp -R $$dir/dist/$$dir dist/activitywatch; \
 	done
 # Move aw-qt to the root of the dist folder
 	mv dist/activitywatch/aw-qt aw-qt-tmp
