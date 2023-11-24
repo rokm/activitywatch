@@ -181,6 +181,11 @@ jobs:
       run: |
         source venv/bin/activate || source venv/Scripts/activate
         poetry install  # run again to ensure we have the correct version of PyInstaller
+
+        # Test the PyInstaller fix
+        pip uninstall -y pyinstaller
+        pip install git+https://github.com/rokm/pyinstaller@fix-merge-symlink-bookkeeping
+
         make package SKIP_SERVER_RUST=${{ matrix.skip_rust }}
 
     - name: Package dmg
