@@ -20,6 +20,13 @@ jobs:
       AW_EXTRAS: true
       # sets the macOS version target, see: https://users.rust-lang.org/t/compile-rust-binary-for-older-versions-of-mac-osx/38695
       MACOSX_DEPLOYMENT_TARGET: 10.9
+      # Enable strict collect mode to catch file duplication problems in PKG/Carchive (onefile builds) or COLLECT
+      # (onedir builds) at build time.
+      PYINSTALLER_STRICT_COLLECT_MODE: 1
+      # Enable strict handling of codesign errors for macOS bundles.
+      PYINSTALLER_STRICT_BUNDLE_CODESIGN_ERROR: 1
+      # Enable strict verification of macOS bundles w.r.t. the code-signing requirements.
+      PYINSTALLER_VERIFY_BUNDLE_SIGNATURE: 1
     defaults:
       run:
         shell: bash
